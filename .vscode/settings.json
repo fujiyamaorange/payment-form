@@ -1,0 +1,26 @@
+{
+  "editor.tabSize": 2,
+  "editor.insertSpaces": true,
+  "files.insertFinalNewline": true,
+  // Prettier
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "[typescript]": {
+    "editor.formatOnSave": true
+  },
+  "[typescriptreact]": {
+    "editor.formatOnSave": true
+  },
+  // ESLint
+  "eslint.alwaysShowStatus": true,
+  "eslint.options": {
+    "overrideConfig": {
+      "parserOptions": {
+        "project": ["${workspaceFolder}/tsconfig.json"]
+      }
+    }
+  },
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true,
+    "source.organizeImports": false
+  }
+}
