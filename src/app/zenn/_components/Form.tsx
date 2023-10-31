@@ -83,6 +83,15 @@ export const Form = () => {
 
   const onSubmit: SubmitHandler<SchemaType> = (data) => {
     console.log(data);
+    if (data.paymentMethod === "point") {
+      alert(`支払い方法: ${data.paymentMethod}`);
+    } else if (data.card.order === "new") {
+      alert(
+        `支払い方法: ${data.paymentMethod}\n カード番号: ${data.card.cardNumber}`
+      );
+    } else {
+      alert(`支払い方法: ${data.paymentMethod}\n カードID: ${data.card.id}`);
+    }
   };
 
   const onError: SubmitErrorHandler<SchemaType> = (errors) => {
