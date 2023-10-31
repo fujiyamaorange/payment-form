@@ -50,6 +50,10 @@ export const Form = () => {
       paymentMethod: undefined,
       card: {
         order: "first",
+        id: "card-id1",
+        maskedCardNumber: "**** **** **** 1111",
+        cardHolderName: "SUZUKI JIRO",
+        goodThru: "12/27",
         save: true,
       },
     });
