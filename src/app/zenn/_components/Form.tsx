@@ -1,7 +1,13 @@
 "use client";
 
-import { FormProvider, SubmitHandler, useForm } from "react-hook-form";
-import { SchemaType } from "./schema";
+import {
+  FormProvider,
+  SubmitErrorHandler,
+  SubmitHandler,
+  useForm,
+} from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { SchemaType, schema } from "./schema";
 import { PointRadio } from "./PointRadio";
 import { CardRadio } from "./CardRadio";
 import { CardNumber } from "./CardNumber";
@@ -50,6 +56,7 @@ export const Form = () => {
   }, []);
 
   const methods = useForm<SchemaType>({
+    resolver: zodResolver(schema),
     defaultValues: {
       paymentMethod: undefined,
       card: {
@@ -72,14 +79,18 @@ export const Form = () => {
 
   const onSubmit: SubmitHandler<SchemaType> = (data) => {
     console.log(data);
-    alert("決済が完了しました");
+  };
+
+  const onError: SubmitErrorHandler<SchemaType> = (errors) => {
+    console.log(errors);
+    alert("フォームエラー");
   };
 
   return (
     <FormProvider {...methods}>
       <form
         className="w-80 mx-auto mt-40"
-        onSubmit={methods.handleSubmit(onSubmit)}
+        onSubmit={methods.handleSubmit(onSubmit, onError)}
       >
         <PointRadio />
         <CardRadio />
