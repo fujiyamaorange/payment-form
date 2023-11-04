@@ -54,6 +54,7 @@ export const Form = () => {
         maskedCardNumber: "**** **** **** 1111",
         cardHolderName: "SUZUKI JIRO",
         goodThru: "12/27",
+        // カードが3枚以上あればfalseにする
         save: true,
       },
     });
